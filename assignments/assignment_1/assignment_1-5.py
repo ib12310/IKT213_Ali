@@ -10,7 +10,7 @@ frame_width = int(cam.get(cv2.CAP_PROP_FRAME_WIDTH))
 frame_height = int(cam.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
 # Make sure the directory exists
-output_dir = os.path.expanduser("~/IKT213_Ali/assignment_1/solutions/")
+output_dir = os.path.expanduser("~Python/ikt213/assignments/assignment_1/solutions")
 os.makedirs(output_dir, exist_ok=True)
 
 # Path for saving the output file
