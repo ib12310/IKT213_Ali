@@ -8,7 +8,6 @@ def print_image_information(image):
     print("Height:", height)
     print("Width:", width)
     print("Channels:", channels)
-
     print("Size:", image.size)
     print("Data type:", image.dtype)
 
