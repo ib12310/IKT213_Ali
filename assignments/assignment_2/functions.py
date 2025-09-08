@@ -14,3 +14,12 @@ def padding(image, border_width, out_dir, out_name="padded.png"):
     )
     cv2.imwrite(os.path.join(out_dir, out_name), padded)
     return padded
+
+def cropping(image, x0, x1, y0, y1, out_dir, out_name="cropped.png"):
+    check_dir(out_dir)
+    h, w = image.shape[:2]
+    x0, y0 = max(0, x0), max(0, y0)
+    x1, y1 = min(w, x1), min(h, y1)
+    cropped = image[y0:y1, x0:x1]
+    cv2.imwrite(os.path.join(out_dir, out_name), cropped)
+    return cropped
