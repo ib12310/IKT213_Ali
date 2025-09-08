@@ -4,7 +4,7 @@ import numpy as np
 from numpy.ma.core import empty
 
 from functions import (
-    padding, cropping,resizing, copying,
+    padding, crop,resize, copy, grayscale, hsv, hue_shifted, smoothing, rotation
 )
 
 BASE = r"C:\Users\ibrah\Python\ikt213\assignments\assignment_2"
@@ -24,12 +24,28 @@ padded = padding(image, border_width=100, out_dir=BASE_OUT)
 h, w = image.shape[:2]
 x0, y0 = 80, 80
 x1, y1 = w - 130, h - 130
-cropped = cropping(image, x0, x1, y0, y1, out_dir=BASE_OUT)
+cropped = crop(image, x0, x1, y0, y1, out_dir=BASE_OUT)
 
 # 3) Resizing to 200x200
-resized = resizing(image, width=200, height=200, out_dir=BASE_OUT)
+resized = resize(image, width=200, height=200, out_dir=BASE_OUT)
 
 # 4) Manually copying into empty array
 empty = np.zeros_like(image, dtype=np.uint8)
-copied = copying(image, empty, out_dir=BASE_OUT)
+copied = copy(image, empty, out_dir=BASE_OUT)
 
+# 5) grayscaling
+gray = grayscale(image, out_dir=BASE_OUT)
+
+# 6) Converting to HSV
+hsv_image = hsv(image, out_dir=BASE_OUT)
+
+# 7) color shifted by +50 for each channel
+empty2 = np.zeros_like(image, dtype=np.uint8)
+shifted = hue_shifted(image, empty2, hue=50, out_dir=BASE_OUT)
+
+# 8) Smoothing by blurring
+smoothed = smoothing(image, out_dir=BASE_OUT)
+
+# 9) Rotation 90 and 180 degrees
+rotate90 = rotation(image, rotation_angle=90, out_dir=BASE_OUT)
+rotate180 = rotation(image, rotation_angle=180, out_dir=BASE_OUT)
