@@ -7,7 +7,8 @@ from functions import (
     padding, crop,resize, copy, grayscale, hsv, hue_shifted, smoothing, rotation
 )
 
-BASE = r"C:\Users\ibrah\Python\ikt213\assignments\assignment_2"
+BASE = os.path.dirname(os.path.abspath(__file__))
+
 BASE_OUT = os.path.join(BASE, "solutions")
 os.makedirs(BASE_OUT, exist_ok=True)
 
@@ -17,7 +18,7 @@ image = cv2.imread(img_path)
 if image is None:
     raise ValueError("Image could not be loaded")
 
-# 1) Padding with border width 100px
+# 1) Padding reflecting border
 padded = padding(image, border_width=100, out_dir=BASE_OUT)
 
 # 2) Cropping, 80px from top-left, 130 from bottom-right

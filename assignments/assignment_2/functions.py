@@ -11,7 +11,7 @@ def padding(image, border_width, out_dir, out_name="padded.png"):
     padded = cv2.copyMakeBorder(
         image,
         border_width, border_width, border_width, border_width,
-        cv2.BORDER_CONSTANT,
+        cv2.BORDER_REFLECT_101
     )
     cv2.imwrite(os.path.join(out_dir, out_name), padded)
     return padded
